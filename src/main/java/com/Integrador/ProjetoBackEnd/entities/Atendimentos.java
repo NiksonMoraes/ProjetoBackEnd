@@ -46,4 +46,9 @@ public class Atendimentos {
     public void setValorTotal(Double valorTotal) {
         this.valorTotal = valorTotal;
     }
+
+    public Atendimentos(Long id) {
+        this.id = id;
+    }
+
 }
