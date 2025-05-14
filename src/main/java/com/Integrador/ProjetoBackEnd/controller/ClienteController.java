@@ -4,7 +4,6 @@ import com.Integrador.ProjetoBackEnd.entities.Clientes;
 import com.Integrador.ProjetoBackEnd.repository.ClienteRepository;
 import org.springframework.web.bind.annotation.*;
 
-import javax.xml.catalog.BaseEntry;
 import java.util.List;
 
 @RestController
