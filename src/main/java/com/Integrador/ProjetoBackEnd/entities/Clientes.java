@@ -6,35 +6,46 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Clientes extends Cadastros {
+public class Clientes {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String cpf;
+    private String nome;
 
-    private String dataNascimento;
+    private String email;
+
+    private String telefone;
 
 
-    @Override
     public Long getId() {
         return id;
     }
 
-    public String getCpf() {
-        return cpf;
+    public String getNome() {
+        return nome;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public String getDataNascimento() {
-        return dataNascimento;
+    public String getEmail() {
+        return email;
     }
 
-    public void setDataNascimento(String dataNascimento) {
-        this.dataNascimento = dataNascimento;
+    public void setEmail(String email) {
+        this.email = email;
     }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+
 }
