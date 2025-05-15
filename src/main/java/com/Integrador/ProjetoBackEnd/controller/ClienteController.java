@@ -1,7 +1,8 @@
 package com.Integrador.ProjetoBackEnd.controller;
 
-import com.Integrador.ProjetoBackEnd.entities.Clientes;
+import com.Integrador.ProjetoBackEnd.entities.Cliente;
 import com.Integrador.ProjetoBackEnd.repository.ClienteRepository;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,25 +17,34 @@ public class ClienteController {
     }
 
     @GetMapping
-    public List<Clientes> listarTodos(){
+    public List<Cliente> listarTodos(){
         return repository.findAll();
     }
 
     @GetMapping("/{id}")
-    public Clientes buscarPorId(@PathVariable Long id){
+    public Cliente buscarPorId(@PathVariable Long id){
         return repository.findById(id).orElseThrow();
     }
 
     @PostMapping
-    public Clientes criar(@ResponseBody Clientes cliente){
+    public Cliente criar(@ResponseBody Cliente cliente){
         return repository.save(cliente);
     }
 
     @PutMapping("/{id}")
-    public Clientes atualizar(@PathVariable Long id, @RequestBody Clientes cliente){
-        return repository.save(cliente);
+    public ResponseEntity<Cliente> atualizar(@PathVariable Long id, @RequestBody Cliente dados){
+        return repository.findById(id).map(Cliente cliente -> {
+            if (dados.getNome() != null) cliente.setNome(dados.getNome());
+            if (dados.getEmail() != null) cliente.setEmail(dados.getNome());
+            if (dados.getTelefone() != null) cliente.setTelefone(dados.getNome());
+
+            Cliente clienteAtualizado = repository.save(cliente);
+            return ResponseEntity.ok(clienteAtualizado);
+        }).orElse(ResponseEntity.notFound().build());
     }
 
-
+    public void deletar(@PathVariable Long id){
+        repository.deleteById(id);
+    }
 
 }

@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Produtos {
+public class Barbeiro {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,9 +14,7 @@ public class Produtos {
 
     private String nome;
 
-    private Double precoDeCusto;
-
-    private Double precoDeVenda;
+    private String especialidade;
 
 
     public Long getId() {
@@ -31,19 +29,12 @@ public class Produtos {
         this.nome = nome;
     }
 
-    public Double getPrecoDeCusto() {
-        return precoDeCusto;
+    public String getEspecialidade() {
+        return especialidade;
     }
 
-    public void setPrecoDeCusto(Double precoDeCusto) {
-        this.precoDeCusto = precoDeCusto;
+    public void setEspecialidade(String especialidade) {
+        this.especialidade = especialidade;
     }
 
-    public Double getPrecoDeVenda() {
-        return precoDeVenda;
-    }
-
-    public void setPrecoDeVenda(Double precoDeVenda) {
-        this.precoDeVenda = precoDeVenda;
-    }
 }

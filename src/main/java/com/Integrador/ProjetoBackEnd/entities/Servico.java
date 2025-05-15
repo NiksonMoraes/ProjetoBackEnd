@@ -4,9 +4,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import java.math.BigDecimal;
 
 @Entity
-public class Cadastros {
+public class Servico {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,11 +15,9 @@ public class Cadastros {
 
     private String nome;
 
-    private String email;
+    private BigDecimal preco;
 
-    private String endereco;
-
-    private String telefone;
+    private Integer duracao;
 
 
     public Long getId() {
@@ -33,27 +32,20 @@ public class Cadastros {
         this.nome = nome;
     }
 
-    public String getEmail() {
-        return email;
+    public BigDecimal getPreco() {
+        return preco;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setPreco(BigDecimal preco) {
+        this.preco = preco;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public Integer getDuracao() {
+        return duracao;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setDuracao(Integer duracao) {
+        this.duracao = duracao;
     }
 
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
 }
