@@ -17,23 +17,23 @@ public class ClienteController {
     }
 
     @GetMapping
-    public List<Cliente> listarTodos(){
+    public List<Cliente> listar(){
         return repository.findAll();
     }
 
     @GetMapping("/{id}")
-    public Cliente buscarPorId(@PathVariable Long id){
+    public Cliente buscar(@PathVariable Long id){
         return repository.findById(id).orElseThrow();
     }
 
     @PostMapping
-    public Cliente criar(@ResponseBody Cliente cliente){
+    public Cliente criar(@RequestBody Cliente cliente){
         return repository.save(cliente);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Cliente> atualizar(@PathVariable Long id, @RequestBody Cliente dados){
-        return repository.findById(id).map(Cliente cliente -> {
+        return repository.findById(id).map(cliente -> {
             if (dados.getNome() != null) cliente.setNome(dados.getNome());
             if (dados.getEmail() != null) cliente.setEmail(dados.getNome());
             if (dados.getTelefone() != null) cliente.setTelefone(dados.getNome());
