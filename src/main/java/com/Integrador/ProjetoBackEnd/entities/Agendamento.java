@@ -1,6 +1,7 @@
 package com.Integrador.ProjetoBackEnd.entities;
 
 import jakarta.persistence.*;
+import org.antlr.v4.runtime.misc.NotNull;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -13,14 +14,18 @@ public class Agendamento {
     private Long id;
 
     @ManyToOne
+    @NotNull
     private Cliente cliente;
 
     @ManyToOne
+    @NotNull
     private Barbeiro barbeiro;
 
     @ManyToOne
+    @NotNull
     private Servico servico;
 
+    @NotNull
     private LocalDateTime dataHora;
 
 
